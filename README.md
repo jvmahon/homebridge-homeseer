@@ -1,13 +1,19 @@
 [![npm version](https://badge.fury.io/js/homebridge-homeseer-plugin-2018.svg)](https://badge.fury.io/js/homebridge-homeseer-plugin-2018)
 
+## End Of Life for this Plugin - A New Hope
+This Plugin is at end-of-life stage. However, it will soon be reborn as the "Homebridge-HomeSeer4" plugin. See https://github.com/jvmahon/Homebridge-HomeSeer4.  Major new chnages include:
+
+* A new Telnet based device control interface which will be substantially faster when controlling a large number of devices at once. 
+* Simplified "config.json" setup including additional capabilities to automatically set more of the operational device parameters (icluding all of the on / off / open / close/ Lock / Unlock values for HomeSeer devices) as well as all Thermostat device parameters. 
+* Finally, after HomeSeer 4 rolls out its new "Categories" feature, I  hope to be able to use that feature so you can put a device into a specific "Category" from the HomeSeer interface whereby the plugin will automatically set its appropriate device type. I expect Version 1.0 of this updated plugin to be rolled out by January 1, 2020.
+
+
 # homebridge-homeseer-plugin-2018
 
 ### For the most up-to-date information, see: https://github.com/jvmahon/homebridge-homeseer/
 
 Information on github and in the wiki section may be more up-to-date than in the README file downloaded from 'npm'. Its strongly recommended that you check the github.com information (both the README and the wiki section) for up-to-date information and assistance.
 
-## HomeSeer 4 - Future Direction
-I've aleady set up a new repository for the HomeSeer 4 version of the plugin, https://github.com/jvmahon/Homebridge-HomeSeer4, though no substantial work has started. My plan is to include additional capabilities in the plugin to automatically set more of the operational device parameters (in theory, I should be able to get all of the on / off / open / close values used for a particular device from HomeSeer. HomeSeer 4 will include a new "Categories" feature and I hope to be able to use that feature so you can put a device into a specific "Category" from the HomeSeer interface whereby the plugin will automatically set its appropriate device type. That's the hope anyway!
 
 ## Overview
 
@@ -33,10 +39,6 @@ An "offValue" parameter setting is now allowed for Switches, Outlets, Fans and L
 An "offValues" array can now be set for binary switch types using an off value other than 0. This is for 'odd' use cases and generally does not need to be set by the user!
 
 You may now specify a "tamperRef" for most sensor types. The "tamperRef" parameter should be set to the HomeSeerDevice that reports that a device has been tampered with. If set, the Home app will indicate on a device's "details" page if it has been tampered with.
-
-
-
-
 
 
 ## **New in 2.3.5** - onValue Support
