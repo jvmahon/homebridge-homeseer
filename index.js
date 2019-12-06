@@ -328,6 +328,7 @@ HomeSeerPlatform.prototype =
 			{
 				function HSData(array) 
 				{
+					this.command = array[0];
 					this.ref = array[1];
 					this.newValue = array[2];
 					this.oldValue = array[3];
@@ -355,25 +356,51 @@ HomeSeerPlatform.prototype =
 				// Next, set up an event listener to receive any change data from HomeSeer and then update HomeKit				
 				client.on('data', (data) => 
 						{
-
-							var myData = new HSData(data.toString().slice(0, -2).split(","));
+							const allPendingUpdates = data.toString().split(/\r\n|\n|\r/)
 							
-							//Only need to do an update if there is HomeKit data associated with it!
-							// Which occurs if the _statusObjects array has a non-zero length for the reference reported.
-							if( _statusObjects[myData.ref])
+							for (const thisUpdate of allPendingUpdates)
 							{
-								this.log("Received HomeSeer status update data for HomeSeer device: " + cyan(myData.ref) +", new value: " + cyan(myData.newValue) + ", old value: " + cyan(myData.oldValue));
-								_HSValues[myData.ref] = 	parseFloat(myData.newValue);	
-
-								var statusObjectGroup = _statusObjects[myData.ref];
-								for (var thisCharacteristic in statusObjectGroup)
+								if (thisUpdate == "") continue;
+								let myData = new HSData(thisUpdate.split(","));
+								
+								switch(myData.command)
 								{
-									updateCharacteristicFromHSData(statusObjectGroup[thisCharacteristic], myData.ref);
+								case ("ok"):
+									{
+									break;
+									};
+								case("DC"): // Handle received data
+									{	
+										if( _statusObjects[myData.ref])
+										{
+											this.log("Received HomeSeer status update data for HomeSeer device: " + cyan(myData.ref) +", new value: " + cyan(myData.newValue) + ", old value: " + cyan(myData.oldValue));
+											_HSValues[myData.ref] = 	parseFloat(myData.newValue);	
+
+											var statusObjectGroup = _statusObjects[myData.ref];
+											for (var thisCharacteristic in statusObjectGroup)
+											{
+												updateCharacteristicFromHSData(statusObjectGroup[thisCharacteristic], myData.ref);
+											}
+										} 
+
+										break;
+									};
+									
+								case("error"):
+								{
+									break;
+								};
+								default:
+									{
+											break;
+									}
 								}
-							} 
+							}
 						});
 					var numAttempts = 0;
 					// If the status port closes, print a warning and then try to re-open it in 30 seconds.
+					
+					
 					client.on('close', () => 
 						{
 							this.log(red("* Warning * - ASCII Port closed - Instant Status Failure!. Restart system if failure continues."));
