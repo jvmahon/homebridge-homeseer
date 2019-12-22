@@ -543,7 +543,6 @@ HomeSeerAccessory.prototype = {
 	// setHSValue function should be bound by .bind() to a HomeKit Service Object Characteristic!
 	setHSValue: function (level, callback) {
 		
-		// console.log(magenta("* Debug * - setHSValue called with level: " + level +", for item type: " + this.displayName));
 		
 		// Pass all the variables and functions used. There's probably a cleaner way to do this with module.exports but this works for now!
 		this.log = HomeSeer.log;
