@@ -5,7 +5,9 @@
 
 This Plugin is at end-of-life stage. 
 
-It has been reborn as the "Homebridge-HomeSeer4" plugin. See https://github.com/jvmahon/Homebridge-HomeSeer4.  Major new changes include:
+It has been reborn as the "Homebridge-HomeSeer4" plugin. See github https://github.com/jvmahon/Homebridge-HomeSeer4, and npmjs: https://www.npmjs.com/package/homebridge-homeseer4
+
+Major changes in the updated plugin include:
 
 * A new Telnet based device control interface which is substantially faster when controlling a large number of devices at once. 
 * Simplified "config.json" setup including additional capabilities to automatically set more of the operational device parameters (icluding all of the on / off / open / close/ Lock / Unlock values for HomeSeer devices) as well as all Thermostat device parameters. 
