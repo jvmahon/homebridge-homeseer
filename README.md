@@ -1,12 +1,15 @@
 [![npm version](https://badge.fury.io/js/homebridge-homeseer-plugin-2018.svg)](https://badge.fury.io/js/homebridge-homeseer-plugin-2018)
 
-## End Of Life for this Plugin - A New Hope
-This Plugin is at end-of-life stage. However, it will soon be reborn as the "Homebridge-HomeSeer4" plugin. See https://github.com/jvmahon/Homebridge-HomeSeer4.  Major new changes include:
+# End Of Life for this Plugin 
 
-* A new Telnet based device control interface which will be substantially faster when controlling a large number of devices at once. 
+
+This Plugin is at end-of-life stage. 
+
+It has been reborn as the "Homebridge-HomeSeer4" plugin. See https://github.com/jvmahon/Homebridge-HomeSeer4.  Major new changes include:
+
+* A new Telnet based device control interface which is substantially faster when controlling a large number of devices at once. 
 * Simplified "config.json" setup including additional capabilities to automatically set more of the operational device parameters (icluding all of the on / off / open / close/ Lock / Unlock values for HomeSeer devices) as well as all Thermostat device parameters. 
-* Finally, after HomeSeer 4 rolls out its new "Categories" feature, I  hope to be able to use that feature so you can put a device into a specific "Category" from the HomeSeer interface whereby the plugin will automatically set its appropriate device type. I expect Version 1.0 of this updated plugin to be rolled out by January 1, 2020.
-
+* Finally, after HomeSeer 4 rolls out its new "Categories" feature, I  hope to be able to use that feature so you can put a device into a specific "Category" from the HomeSeer interface whereby the plugin will automatically set its appropriate device type. 
 
 # homebridge-homeseer-plugin-2018
 
